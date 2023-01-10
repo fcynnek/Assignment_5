@@ -5,41 +5,49 @@ public class CustomArrayList<T> implements CustomList<T> {
 	int capacity = 10; // initial max capacity of items array
 	
 	Object[] items = new Object[capacity];
+	
+	int sizeOfList = 0;
 
 	@Override
 	public boolean add(T item) {
 		
-		int i = 0;
+		items[sizeOfList] = item;
+		sizeOfList++;
 		
-		Object[] items = new Object[i];
+		if (sizeOfList == capacity) {
+			capacity = 2 * capacity;
+			Object[] newItems = new Object[capacity];
+			
+			int i = 0;
+				
+			while (i <= sizeOfList-1) {
+				newItems[i] = items[i];
+				i++;
+			}
+						
+			items = newItems;
+		} 
 		
-		while (capacity < i) {
-			((CustomList<T>) items[i]).add(new Object(item));
-		}
 		return false;
 	}
 
 	@Override
 	public int getSize() {
 		
-		int sizeOfList = 0;
-		
-		while (items != null) {
-			sizeOfList = sizeOfList + 1;
-		}
 		if (sizeOfList == 0) {
-			System.out.println("The list is empty");
+			System.out.println("The list is currently empty");
 		}
 		return sizeOfList;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public T get(int index) {
 		
-		if (index <= getSize())  {
-			return (T) items[index];
-		} else if (index > getSize()) {
+		if (index >= getSize() || index < 0)  {
 			System.out.println("Index is out of bounds");
+		} else {
+			return (T) items[index];
 		}
 		return null;
 	}
