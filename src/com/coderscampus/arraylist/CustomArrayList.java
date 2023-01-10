@@ -2,13 +2,20 @@ package com.coderscampus.arraylist;
 
 public class CustomArrayList<T> implements CustomList<T> {
 	
-	int i = 10; // initial max capacity of items array
+	int capacity = 10; // initial max capacity of items array
 	
-	Object[] items = new Object[i];
+	Object[] items = new Object[capacity];
 
 	@Override
 	public boolean add(T item) {
 		
+		int i = 0;
+		
+		Object[] items = new Object[i];
+		
+		while (capacity < i) {
+			((CustomList<T>) items[i]).add(new Object(item));
+		}
 		return false;
 	}
 
