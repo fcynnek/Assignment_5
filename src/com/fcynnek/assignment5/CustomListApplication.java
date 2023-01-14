@@ -31,6 +31,8 @@ public class CustomListApplication {
 		myCustomList.add("element 20");
 		myCustomList.add("element 21");
 		
+		System.out.println(myCustomList.getSize());
+		
 		// then validate that all the elements exist in the data structure
 		for (int i = 0; i < myCustomList.getSize(); i++) {
 			System.out.println(myCustomList.get(i));
